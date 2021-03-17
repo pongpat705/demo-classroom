@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="col-3">
+
+  </div>
+  <div class="col-6">
+    <table class="table">
+      <tr>
+        <th>Id</th>
+        <th>Room</th>
+      </tr>
+      <tr *ngFor="let classRoom of classRoomList">
+        <td>
+          <button class="btn badge-info" (click)="goToStudentClick(classRoom.id)">open {{classRoom.id}}</button>
+        </td>
+        <td>
+          {{classRoom.room}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-3">
+
+  </div>
+
+</div>
+
