@@ -28,9 +28,16 @@ export class ClassroomService {
     );
   }
   updateClassRoom(classRoom: Classroom): Observable<ResponseModel<any>>{
-    const url = environment.module.classroom.classroomList;
+    const url = environment.module.classroom.classroomUpdate;
     return this.http.post<ResponseModel<any>>(url, classRoom, this.httpOptions).pipe(
-      tap(_ => console.log('getClassroomList success'))
+      tap(_ => console.log('ClassroomUpdate success'))
+    );
+  }
+
+  getClassroom(roomId: string): Observable<ResponseModel<Classroom>> {
+    const url = environment.module.classroom.classroom + roomId;
+    return this.http.get<ResponseModel<Classroom>>(url, this.httpOptions).pipe(
+      tap(_ => console.log('getClassroom success'))
     );
   }
 }

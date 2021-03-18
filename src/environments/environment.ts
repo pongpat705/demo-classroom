@@ -7,6 +7,8 @@ export const environment = {
   module : {
     classroom: {
       classroomList: 'http://localhost:8080/api/classroom',
+      classroom: 'http://localhost:8080/api/classroom/',
+      classroomUpdate: 'http://localhost:8080/api/classroom/update',
     }
   }
 };

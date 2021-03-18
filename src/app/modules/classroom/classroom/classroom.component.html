@@ -1,1 +1,9 @@
 <p>classroom works!</p>
+
+{{classRoom}}
+
+<p>room name : </p>
+<input type="text" name="roomName" id="roomName" [(ngModel)]="classRoom.room">
+<button class="btn btn-info" (click)="updateRoomName()"></button>
+
+{{classRoom.room}}
