@@ -9,7 +9,9 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
 import { ClassroomComponent } from './modules/classroom/classroom/classroom.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ClassroomAddComponent } from './modules/classroom/classroom-add/classroom-add.component';
+import { ValidateFormComponent } from './modules/formcontrol/validate-form/validate-form.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,18 @@ import {FormsModule} from "@angular/forms";
     ClassroomListComponent,
     HeaderComponent,
     FooterComponent,
-    ClassroomComponent
+    ClassroomComponent,
+    ClassroomAddComponent,
+    ValidateFormComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

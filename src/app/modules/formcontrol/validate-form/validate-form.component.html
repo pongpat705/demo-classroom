@@ -1,0 +1,27 @@
+<form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <label>
+    Citizen Id:
+    <input type="text" formControlName="cid">
+  </label>
+
+  <label>
+    Mobile No:
+    <input type="text" formControlName="mobileNo">
+  </label>
+
+  {{profileForm.valid}}
+  {{profileForm.errors}}
+
+  <button type="submit" >Submit</button>
+</form>

@@ -5,6 +5,8 @@ import {ResponseModel} from "./model/responseModel";
 import {Classroom} from "./model/classroom";
 import {environment} from "../../../environments/environment";
 import {tap} from "rxjs/operators";
+import {Student} from "./model/student";
+import {ClassroomStudent} from "./model/classroom-student";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,20 @@ export class ClassroomService {
     const url = environment.module.classroom.classroom + roomId;
     return this.http.get<ResponseModel<Classroom>>(url, this.httpOptions).pipe(
       tap(_ => console.log('getClassroom success'))
+    );
+  }
+
+  getFreeStudent(): Observable<ResponseModel<Array<Student>>> {
+    const url = environment.module.student.freeStudent;
+    return this.http.get<ResponseModel<Array<Student>>>(url, this.httpOptions).pipe(
+      tap(_ => console.log('getFreeStudent success'))
+    );
+  }
+
+  getStudentClassROom(roomId: string): Observable<ResponseModel<Array<ClassroomStudent>>> {
+    const url = environment.module.classroom.classroom + roomId + '/student';
+    return this.http.get<ResponseModel<Array<ClassroomStudent>>>(url, this.httpOptions).pipe(
+      tap(_ => console.log('getStudentClassROom success'))
     );
   }
 }

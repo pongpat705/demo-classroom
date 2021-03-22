@@ -1,9 +1,29 @@
-<p>classroom works!</p>
 
-{{classRoom}}
+<div class="container">
 
-<p>room name : </p>
-<input type="text" name="roomName" id="roomName" [(ngModel)]="classRoom.room">
-<button class="btn btn-info" (click)="updateRoomName()"></button>
+  <p>room name : </p>
+  <input type="text" name="roomName" id="roomName" [(ngModel)]="classRoom.room">
+  <button class="btn btn-info" (click)="updateRoomName()">update room</button>
+  <br>
+  <select [(ngModel)]="selectedStudent">
+    <option *ngFor="let f of freeStudentList" [value]="f.id">{{f.name}}</option>
+  </select>
+  <button class="btn btn-info" (click)="addStudent()">add student to this room</button>
 
-{{classRoom.room}}
+  <table>
+    <table class="table">
+      <tr>
+        <th>Room Name</th>
+        <th>Student Name</th>
+      </tr>
+      <tr *ngFor="let s of classRoomStudentList">
+        <td>
+          {{s.roomName}}
+        </td>
+        <td>
+          {{s.studentName}}
+        </td>
+      </tr>
+    </table>
+  </table>
+</div>

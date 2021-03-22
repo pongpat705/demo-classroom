@@ -9,6 +9,9 @@ export const environment = {
       classroomList: 'http://localhost:8080/api/classroom',
       classroom: 'http://localhost:8080/api/classroom/',
       classroomUpdate: 'http://localhost:8080/api/classroom/update',
+    },
+    student : {
+      freeStudent: 'http://localhost:8080/api/student/free'
     }
   }
 };
