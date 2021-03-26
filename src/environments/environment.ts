@@ -12,6 +12,9 @@ export const environment = {
     },
     student : {
       freeStudent: 'http://localhost:8080/api/student/free'
+    },
+    export : {
+      excel : 'http://localhost:8080/excel'
     }
   }
 };

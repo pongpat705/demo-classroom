@@ -7,6 +7,7 @@ import {environment} from "../../../environments/environment";
 import {tap} from "rxjs/operators";
 import {Student} from "./model/student";
 import {ClassroomStudent} from "./model/classroom-student";
+import {InqueryRequestModel} from "../formcontrol/model/InqueryRequestModel";
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,16 @@ export class ClassroomService {
     const url = environment.module.classroom.classroom + roomId + '/student';
     return this.http.get<ResponseModel<Array<ClassroomStudent>>>(url, this.httpOptions).pipe(
       tap(_ => console.log('getStudentClassROom success'))
+    );
+  }
+
+  exportData(inqueryModel: InqueryRequestModel): Observable<any> {
+    const exportHttpOption = {
+      responseType: 'blob' as 'json'
+    };
+    const url = environment.module.export.excel;
+    return this.http.post<any>(url, inqueryModel, exportHttpOption).pipe(
+      tap(_ => console.log('exportData success'))
     );
   }
 }

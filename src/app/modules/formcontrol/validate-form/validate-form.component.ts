@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ClassroomService} from '../../classroom/classroom.service';
+import {InqueryRequestModel} from "../model/InqueryRequestModel";
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-validate-form',
@@ -8,21 +11,22 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ValidateFormComponent implements OnInit {
 
-  profileForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    cid: new FormControl('', [Validators.required, Validators.pattern(/[0-9]{13}/)]),
-    mobileNo: new FormControl('', [Validators.required, Validators.pattern(/[0-9]{10}/)]),
-  });
 
-  constructor() { }
+
+  constructor(private classroomService: ClassroomService) { }
 
   ngOnInit(): void {
   }
 
-  submitForm(): void{
-    if (this.profileForm.valid){
-    }
+  exportData(): void{
+
+    const requestInquiry: InqueryRequestModel = new InqueryRequestModel();
+    this.classroomService.exportData(requestInquiry)
+      .subscribe( response => {
+        const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+        FileSaver.saveAs(blob, 'testFilename');
+      });
+
   }
 
 }
